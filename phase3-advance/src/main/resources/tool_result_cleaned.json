@@ -1,0 +1,51 @@
+[
+  {
+    "trace_id": "T-501",
+    "tool": "file_export",
+    "status": "success",
+    "output": "exported: /home/u001/月报_简洁版.pdf ",
+    "latency_ms": 420
+  },
+  {
+    "trace_id": "T-502",
+    "tool": "file_export",
+    "status": "success",
+    "output": "exported: /home/u001/月报_详细版.pdf 完成 ！！",
+    "latency_ms": 510
+  },
+  {
+    "trace_id": "T-503",
+    "tool": "web_search",
+    "status": "failed",
+    "output": "timeout after 3000ms …… 网络 不稳定",
+    "latency_ms": 3001
+  },
+  {
+    "trace_id": "T-504",
+    "tool": "shell_exec",
+    "status": "success",
+    "output": "kylin-driver-check: version 2.1.0 stdout: OK",
+    "latency_ms": 88
+  },
+  {
+    "trace_id": "T-505",
+    "tool": "calendar_write",
+    "status": "success",
+    "output": "created event: 项目复盘 2026-06-05 15:00; attendee=liexample.com ",
+    "latency_ms": 640
+  },
+  {
+    "trace_id": "T-506",
+    "tool": "file_export",
+    "status": "failed",
+    "output": "ERROR permission denied: /root/report.docx ... retry? retry?",
+    "latency_ms": 920
+  },
+  {
+    "trace_id": "T-507",
+    "tool": "memory_delete",
+    "status": "success",
+    "output": "deleted candidate memory: email=zhangsanexample.com reason=forget_command",
+    "latency_ms": 77
+  }
+]

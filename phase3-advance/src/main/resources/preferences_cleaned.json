@@ -1,0 +1,44 @@
+[
+  {
+    "user_id": "U001",
+    "pref_key": "output_style",
+    "pref_value": "简洁、少废话",
+    "preference_type": "explicit"
+  },
+  {
+    "user_id": "U002",
+    "pref_key": "emoji_policy",
+    "pref_value": "允许少量 emoji",
+    "preference_type": "default"
+  },
+  {
+    "user_id": "U003",
+    "pref_key": "search_scope",
+    "pref_value": "麒麟系统/驱动",
+    "preference_type": "explicit"
+  },
+  {
+    "user_id": "UNKNOWN",
+    "pref_key": "security_level",
+    "pref_value": "高",
+    "preference_type": "explicit"
+  },
+  {
+    "user_id": "U005",
+    "pref_key": "meeting_minutes_format",
+    "pref_value": "bullet 列表",
+    "preference_type": "temporary"
+  },
+  {
+    "user_id": "U006",
+    "pref_key": "privacy_policy",
+    "pref_value": "不保存测试手机号",
+    "preference_type": "explicit"
+  },
+  {
+    "user_id": "U003",
+    "pref_key": "driver_update_entry",
+    "pref_value": "驱动管理器",
+    "preference_type": "correction"
+  }
+]

@@ -1,0 +1,62 @@
+# 麒麟 OS Agent 录屏操作步骤 (D4 完整整合版)
+
+## 1. 启动项目
+1. 打开终端，进入项目目录：`cd phase3-advance`
+2. 运行命令：`.\mvnw.cmd spring-boot:run`
+3. 第一次运行会自动下载 Maven，请耐心等待
+4. 等待项目启动完成，看到 "Started AgentApplication" 提示
+
+## 2. 展示 D4 数据整合
+1. 打开新的终端窗口
+2. 查看 D4 数据概览：
+```bash
+curl http://localhost:8080/api/d4-agent/overview
+```
+3. 查看所有用户偏好：
+```bash
+curl http://localhost:8080/api/d4-agent/preferences
+```
+4. 查看知识库内容：
+```bash
+curl http://localhost:8080/api/d4-agent/knowledge
+```
+
+## 3. 加载 U003 用户偏好并测试
+1. 加载 U003 用户的偏好（驱动更新相关）：
+```bash
+curl -X POST http://localhost:8080/api/d4-agent/load-preferences/U003
+```
+2. 用 U003 身份聊天：
+```bash
+curl -X POST http://localhost:8080/api/d4-agent/U003/chat -H "Content-Type: application/json" -d "{\"message\": \"麒麟系统怎么更新驱动？\"}"
+```
+
+## 4. 加载 U001 用户偏好并测试
+1. 加载 U001 用户的偏好（简洁风格）：
+```bash
+curl -X POST http://localhost:8080/api/d4-agent/load-preferences/U001
+```
+2. 用 U001 身份聊天：
+```bash
+curl -X POST http://localhost:8080/api/d4-agent/U001/chat -H "Content-Type: application/json" -d "{\"message\": \"给我个会议纪要模板\"}"
+```
+
+## 5. 测试记忆功能
+1. 先用 U003 自我介绍：
+```bash
+curl -X POST http://localhost:8080/api/d4-agent/U003/chat -H "Content-Type: application/json" -d "{\"message\": \"我叫录屏测试\"}"
+```
+2. 然后测试记忆：
+```bash
+curl -X POST http://localhost:8080/api/d4-agent/U003/chat -H "Content-Type: application/json" -d "{\"message\": \"我叫什么名字？\"}"
+```
+
+## 6. 基础接口测试（可选）
+1. 测试基础聊天：
+```bash
+curl -X POST http://localhost:8080/api/chat -H "Content-Type: application/json" -d "{\"message\": \"你好\"}"
+```
+
+## 7. 结束
+1. 展示所有测试结果
+2. 说明项目已完整整合 D4 阶段的所有清洗数据

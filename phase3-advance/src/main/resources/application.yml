@@ -1,0 +1,10 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: kylin-os-agent
+
+ollama:
+  base-url: http://localhost:11434
+  model-name: gemma4:e2b
