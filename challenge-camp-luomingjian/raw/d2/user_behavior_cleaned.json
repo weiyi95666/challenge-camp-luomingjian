@@ -1,0 +1,34 @@
+{
+  "results": [
+    {
+      "user_id": "U001",
+      "timestamp": "2026-06-02 09:15:00",
+      "action": "chat",
+      "content": "嗯嗯…那个…帮我把文档导出成PDF吧！！"
+    },
+    {
+      "user_id": "U001",
+      "timestamp": "2026-06-02 09:16:00",
+      "action": "chat",
+      "content": "啊不是word是wps啦"
+    },
+    {
+      "user_id": "U002",
+      "timestamp": "2026-06-02 10:00:00",
+      "action": "click",
+      "content": "设置->隐私->清除缓存"
+    },
+    {
+      "user_id": "U003",
+      "timestamp": null,
+      "action": "chat",
+      "content": "呃…就是…能不能别每次弹窗啊😅"
+    },
+    {
+      "user_id": "U004",
+      "timestamp": "2026-06-02 14:30:00",
+      "action": "voice",
+      "content": "然后然后然后帮我查一下那个麒麟系统怎么装驱动"
+    }
+  ]
+}
