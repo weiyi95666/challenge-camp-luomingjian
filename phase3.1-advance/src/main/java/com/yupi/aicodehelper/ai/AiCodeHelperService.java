@@ -1,8 +1,6 @@
 package com.yupi.aicodehelper.ai;
 
-import com.yupi.aicodehelper.ai.guardrail.SafeInputGuardrail;
 import dev.langchain4j.service.*;
-import dev.langchain4j.service.guardrail.InputGuardrails;
 import dev.langchain4j.service.spring.AiService;
 import reactor.core.publisher.Flux;
 
@@ -10,7 +8,6 @@ import java.util.List;
 
 //改为手动构建，更灵活
 //@AiService
-@InputGuardrails({SafeInputGuardrail.class})
 public interface AiCodeHelperService {
 
     @SystemMessage(fromResource = "system-prompt.txt")
@@ -27,5 +24,10 @@ public interface AiCodeHelperService {
     Result<String> chatWithRag(String userMessage);
 
     // 流式对话
-    Flux<String> chatStream(@MemoryId int memoryId, @UserMessage String userMessage);
+    @SystemMessage(fromResource = "system-prompt.txt")
+    Flux<String> chatStream(@MemoryId int memoryId, @dev.langchain4j.service.UserMessage String userMessage);
+
+    // 多模态流式对话
+    @SystemMessage(fromResource = "system-prompt.txt")
+    Flux<String> chatMultiModal(@MemoryId int memoryId, @dev.langchain4j.service.UserMessage dev.langchain4j.data.message.UserMessage userMessage);
 }

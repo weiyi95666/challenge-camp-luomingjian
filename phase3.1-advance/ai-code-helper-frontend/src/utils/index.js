@@ -1,3 +1,7 @@
+import { marked } from 'marked'
+import hljs from 'highlight.js'
+import 'highlight.js/styles/github-dark.css'
+
 /**
  * 生成聊天室ID
  * @returns {number} 适合int范围的聊天室ID
@@ -25,6 +29,30 @@ export function formatTime(date) {
     } else {
         return date.toLocaleDateString()
     }
+}
+
+/**
+ * 渲染 Markdown 内容
+ * @param {string} content 
+ * @returns {string}
+ */
+export function renderMarkdown(content) {
+    if (!content) return ''
+    
+    marked.setOptions({
+        breaks: true,
+        gfm: true,
+        highlight: function(code, lang) {
+            if (lang && hljs.getLanguage(lang)) {
+                try {
+                    return hljs.highlight(code, { language: lang }).value
+                } catch (__) {}
+            }
+            return hljs.highlightAuto(code).value
+        }
+    })
+    
+    return marked(content)
 }
 
 /**
