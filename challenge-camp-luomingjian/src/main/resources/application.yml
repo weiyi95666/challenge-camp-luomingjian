@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: data-cleaning-agent
+  
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+ollama:
+  base-url: http://localhost:11434
+  model-name: gemma4:e2b
+  timeout-seconds: 15
+  enabled: false
+
+logging:
+  level:
+    com.yupi.datacleaning: INFO
+    dev.langchain4j: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
