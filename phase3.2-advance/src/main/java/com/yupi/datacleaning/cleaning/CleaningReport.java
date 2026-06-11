@@ -13,6 +13,7 @@ public class CleaningReport {
     private int filledMissingValues = 0;
     private int maskedSensitiveData = 0;
     private int cleanedTextEntries = 0;
+    private int handledOutliers = 0;
     private int originalRowCount = 0;
     private int finalRowCount = 0;
     private Map<String, Integer> columnStats = new HashMap<>();

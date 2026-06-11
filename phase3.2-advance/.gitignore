@@ -39,3 +39,13 @@ build/
 
 ### Generated Documents ###
 generated-docs/
+
+### Data Cleaning ###
+temp/
+outputs/
+*.csv
+
+### Frontend ###
+ai-code-helper-frontend/node_modules/
+ai-code-helper-frontend/dist/
+ai-code-helper-frontend/.DS_Store

@@ -29,4 +29,29 @@ public class WorkflowState implements Serializable {
     
     private LocalDateTime startTime;
     private LocalDateTime endTime;
+    
+    // Budget control fields
+    private int tokenCount;
+    private int executionSteps;
+    private int maxTokenCount;
+    private int maxExecutionSteps;
+    
+    public void incrementTokenCount(int tokens) {
+        this.tokenCount += tokens;
+        checkBudget();
+    }
+    
+    public void incrementExecutionSteps() {
+        this.executionSteps++;
+        checkBudget();
+    }
+    
+    private void checkBudget() {
+        if (maxTokenCount > 0 && tokenCount > maxTokenCount) {
+            throw new BudgetExceededException("Token budget exceeded: " + tokenCount + " > " + maxTokenCount);
+        }
+        if (maxExecutionSteps > 0 && executionSteps > maxExecutionSteps) {
+            throw new BudgetExceededException("Execution steps budget exceeded: " + executionSteps + " > " + maxExecutionSteps);
+        }
+    }
 }
