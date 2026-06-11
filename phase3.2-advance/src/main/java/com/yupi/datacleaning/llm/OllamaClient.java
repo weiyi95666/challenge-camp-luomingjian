@@ -1,6 +1,8 @@
 package com.yupi.datacleaning.llm;
 
 import dev.langchain4j.model.ollama.OllamaChatModel;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -52,11 +54,14 @@ public class OllamaClient {
         }
     }
 
+    @Retry(name = "ollamaService", fallbackMethod = "getFallbackResponse")
+    @CircuitBreaker(name = "ollamaService", fallbackMethod = "getFallbackResponse")
     public String generateResponse(String prompt) {
         initModel();
         
         if (!ollamaAvailable) {
-            return getFallbackResponse(prompt);
+            log.info("Ollama not available, returning fallback response");
+            return getFallbackResponse(prompt, null);
         }
         
         long startTime = System.currentTimeMillis();
@@ -66,10 +71,18 @@ public class OllamaClient {
             log.info("Generated response from Ollama in {}ms", duration);
             return response;
         } catch (Exception e) {
-            log.warn("Failed to generate response in {}ms: {}", System.currentTimeMillis() - startTime, e.getMessage());
+            log.warn("Failed to generate response from Ollama in {}ms: {}", System.currentTimeMillis() - startTime, e.getMessage());
             ollamaAvailable = false;
-            return getFallbackResponse(prompt);
+            return getFallbackResponse(prompt, e);
         }
+    }
+    
+    /**
+     * 检查 Ollama 是否真正可用
+     */
+    public boolean isOllamaAvailable() {
+        initModel();
+        return ollamaAvailable;
     }
 
     public Map<String, Object> analyzeDataForCleaning(String dataSample) {
@@ -120,12 +133,24 @@ public class OllamaClient {
         return steps;
     }
 
-    private String getFallbackResponse(String prompt) {
-        return "Fallback: Based on pattern analysis, I suggest performing standard data cleaning steps:\n" +
-                "1. Remove duplicates\n" +
-                "2. Mask sensitive information\n" +
-                "3. Standardize date formats\n" +
-                "4. Handle missing values\n" +
-                "5. Clean text data";
+    private String getFallbackResponse(String prompt, Exception e) {
+        // 智能判断是数据清洗请求还是普通聊天
+        String lowerPrompt = prompt.toLowerCase();
+        if (lowerPrompt.contains("清洗") || lowerPrompt.contains("clean") || 
+            lowerPrompt.contains("数据") || lowerPrompt.contains("data")) {
+            return "基于模式分析，我建议执行以下标准数据清洗步骤：\n" +
+                    "1. 移除重复数据\n" +
+                    "2. 脱敏敏感信息\n" +
+                    "3. 标准化日期格式\n" +
+                    "4. 处理缺失值\n" +
+                    "5. 清理文本数据";
+        }
+        
+        // 普通聊天的 fallback 响应 - 不使用 "Fallback" 字样，让响应更自然
+        return "你好！我是智能助手。我可以帮你：\n\n" +
+                "1. 回答问题和咨询\n" +
+                "2. 清洗和分析数据\n" +
+                "3. 提供编程帮助\n\n" +
+                "请告诉我你需要什么帮助？";
     }
 }

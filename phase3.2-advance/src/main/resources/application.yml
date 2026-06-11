@@ -13,12 +13,51 @@ spring:
 ollama:
   base-url: http://localhost:11434
   model-name: gemma4:e2b
-  timeout-seconds: 15
-  enabled: false
+  timeout-seconds: 60
+  http-read-timeout-seconds: 120
+  enabled: true
+
+# Resilience4j configuration
+resilience4j:
+  retry:
+    configs:
+      default:
+        max-attempts: 3
+        wait-duration: 1s
+        enable-exponential-backoff: true
+        exponential-backoff-multiplier: 2.0
+    instances:
+      ollamaService:
+        base-config: default
+  circuitbreaker:
+    configs:
+      default:
+        register-health-indicator: true
+        sliding-window-type: COUNT_BASED
+        sliding-window-size: 10
+        minimum-number-of-calls: 5
+        permitted-number-of-calls-in-half-open-state: 3
+        automatic-transition-from-open-to-half-open-enabled: true
+        wait-duration-in-open-state: 10s
+        failure-rate-threshold: 50
+    instances:
+      ollamaService:
+        base-config: default
+
+# Actuator configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,metrics
+  endpoint:
+    health:
+      show-details: always
 
 logging:
   level:
-    com.yupi.datacleaning: INFO
+    com.yupi.datacleaning: DEBUG
     dev.langchain4j: WARN
+    io.github.resilience4j: INFO
   pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%X{traceId}] - %msg%n"

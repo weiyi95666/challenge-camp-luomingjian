@@ -1,5 +1,6 @@
 package com.yupi.datacleaning.controller;
 
+import com.yupi.datacleaning.audit.AuditService;
 import com.yupi.datacleaning.cleaning.CleaningReport;
 import com.yupi.datacleaning.cleaning.DataCleaner;
 import com.yupi.datacleaning.llm.OllamaClient;
@@ -10,6 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.MDC;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import tech.tablesaw.api.Table;
@@ -31,16 +33,27 @@ public class CleaningController {
     private final OllamaClient ollamaClient;
     private final ShortTermMemoryService shortTermMemory;
     private final LongTermMemoryService longTermMemory;
+    private final AuditService auditService;
 
     private final Map<String, CleaningTask> tasks = new ConcurrentHashMap<>();
 
     @PostMapping("/upload")
     public Map<String, Object> uploadFile(@RequestParam("file") MultipartFile file,
                                          @RequestParam(value = "userId", defaultValue = "default") String userId) {
-        String taskId = UUID.randomUUID().toString();
-        String sessionId = UUID.randomUUID().toString();
+        String traceId = UUID.randomUUID().toString();
+        MDC.put("traceId", traceId);
         
         try {
+            String taskId = UUID.randomUUID().toString();
+            String sessionId = UUID.randomUUID().toString();
+            
+            // Audit log
+            Map<String, Object> auditParams = new HashMap<>();
+            auditParams.put("taskId", taskId);
+            auditParams.put("fileName", file.getOriginalFilename());
+            auditParams.put("fileSize", file.getSize());
+            auditService.logAudit(userId, "UPLOAD_FILE", auditParams);
+            
             Path tempDir = Paths.get("temp");
             Files.createDirectories(tempDir);
             
@@ -72,20 +85,32 @@ public class CleaningController {
             
             return result;
         } catch (Exception e) {
+            log.error("Error uploading file", e);
             return Map.of("error", e.getMessage(), "status", "error");
+        } finally {
+            MDC.clear();
         }
     }
 
     @PostMapping("/start/{taskId}")
     public Map<String, Object> startCleaning(@PathVariable String taskId,
                                              @RequestBody Map<String, Object> request) {
-        long startTime = System.currentTimeMillis();
-        CleaningTask task = tasks.get(taskId);
-        if (task == null) {
-            return Map.of("error", "Task not found", "status", "error");
-        }
+        String traceId = UUID.randomUUID().toString();
+        MDC.put("traceId", traceId);
         
         try {
+            long startTime = System.currentTimeMillis();
+            CleaningTask task = tasks.get(taskId);
+            if (task == null) {
+                return Map.of("error", "Task not found", "status", "error");
+            }
+            
+            // Audit log
+            Map<String, Object> auditParams = new HashMap<>();
+            auditParams.put("taskId", taskId);
+            auditParams.put("userId", task.getUserId());
+            auditService.logAudit(task.getUserId(), "START_CLEANING", auditParams);
+            
             task.setStatus("running");
             task.setProgress(20);
             
@@ -125,6 +150,7 @@ public class CleaningController {
             cleaningReport.put("filledMissingValues", report.getFilledMissingValues());
             cleaningReport.put("maskedSensitiveData", report.getMaskedSensitiveData());
             cleaningReport.put("cleanedTextEntries", report.getCleanedTextEntries());
+            cleaningReport.put("handledOutliers", report.getHandledOutliers());
             cleaningReport.put("originalRowCount", report.getOriginalRowCount());
             cleaningReport.put("finalRowCount", report.getFinalRowCount());
             cleaningReport.put("columnStats", report.getColumnStats());
@@ -141,9 +167,14 @@ public class CleaningController {
             return result;
         } catch (Exception e) {
             log.error("Cleaning failed", e);
-            task.setStatus("failed");
-            task.setError(e.getMessage());
+            CleaningTask task = tasks.get(taskId);
+            if (task != null) {
+                task.setStatus("failed");
+                task.setError(e.getMessage());
+            }
             return Map.of("error", e.getMessage(), "status", "error");
+        } finally {
+            MDC.clear();
         }
     }
 
