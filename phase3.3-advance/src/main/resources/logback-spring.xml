@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+    <springProperty scope="context" name="APP_NAME" source="spring.application.name" defaultValue="data-cleaning-agent"/>
+    <springProperty scope="context" name="LOG_PATH" source="logging.file.path" defaultValue="logs"/>
+    
+    <!-- 彩色控制台输出 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %yellow(%d{yyyy-MM-dd HH:mm:ss.SSS}) 
+                %magenta([%thread]) 
+                %highlight(%-5level) 
+                %cyan(%logger{36}) - 
+                %msg%n%ex
+            </pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+    
+    <!-- JSON格式日志文件 - 应用日志 -->
+    <appender name="FILE_JSON" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/${APP_NAME}.log</file>
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp>
+                    <timeZone>Asia/Shanghai</timeZone>
+                </timestamp>
+                <pattern>
+                    <pattern>
+                        {
+                            "timestamp": "%d{yyyy-MM-dd'T'HH:mm:ss.SSSZZ}",
+                            "level": "%level",
+                            "logger": "%logger{36}",
+                            "thread": "%thread",
+                            "message": "%msg",
+                            "traceId": "%mdc{traceId:-}",
+                            "userId": "%mdc{userId:-}",
+                            "errorType": "%mdc{errorType:-}",
+                            "method": "%mdc{method:-}",
+                            "stackTrace": "%mdc{stackTrace:-}",
+                            "inputParams": "%mdc{inputParams:-}"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/${APP_NAME}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+    </appender>
+    
+    <!-- JSON格式错误日志 -->
+    <appender name="ERROR_JSON" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/${APP_NAME}-error.log</file>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp>
+                    <timeZone>Asia/Shanghai</timeZone>
+                </timestamp>
+                <pattern>
+                    <pattern>
+                        {
+                            "timestamp": "%d{yyyy-MM-dd'T'HH:mm:ss.SSSZZ}",
+                            "level": "%level",
+                            "logger": "%logger{36}",
+                            "thread": "%thread",
+                            "message": "%msg",
+                            "traceId": "%mdc{traceId:-}",
+                            "userId": "%mdc{userId:-}",
+                            "errorType": "%mdc{errorType:-}",
+                            "method": "%mdc{method:-}",
+                            "stackTrace": "%mdc{stackTrace:-}",
+                            "inputParams": "%mdc{inputParams:-}",
+                            "retrySuccess": "%mdc{retrySuccess:-false}"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/${APP_NAME}-error-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>50MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+    </appender>
+    
+    <!-- 结构化错误分析日志 - 单独存储错误事件 -->
+    <appender name="ERROR_ANALYSIS_JSON" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/${APP_NAME}-error-analysis.log</file>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp>
+                    <timeZone>Asia/Shanghai</timeZone>
+                </timestamp>
+                <pattern>
+                    <pattern>
+                        {
+                            "timestamp": "%d{yyyy-MM-dd'T'HH:mm:ss.SSSZZ}",
+                            "traceId": "%mdc{traceId:-}",
+                            "errorType": "%mdc{errorType:-}",
+                            "stackTrace": "%mdc{stackTrace:-}",
+                            "method": "%mdc{method:-}",
+                            "inputParams": "%mdc{inputParams:-}",
+                            "userId": "%mdc{userId:-}",
+                            "retrySuccess": "%mdc{retrySuccess:-false}",
+                            "suggestion": "%mdc{suggestion:-}"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/${APP_NAME}-error-analysis-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+    </appender>
+    
+    <!-- Root logger -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_JSON"/>
+        <appender-ref ref="ERROR_JSON"/>
+        <appender-ref ref="ERROR_ANALYSIS_JSON"/>
+    </root>
+    
+    <!-- 项目特定日志级别 -->
+    <logger name="com.yupi.datacleaning" level="DEBUG"/>
+    <logger name="org.springframework" level="INFO"/>
+    <logger name="dev.langchain4j" level="INFO"/>
+</configuration>

@@ -1,0 +1,88 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: data-cleaning-agent
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+# LLM 提供者配置 - 支持多种模型
+llm:
+    providers:
+    - openai
+    - ollama
+
+    # Ollama 本地模型配置
+    ollama:
+        enabled: false
+        base-url: http://localhost:11434
+        model-name: gemma4:e2b
+        timeout-seconds: 60
+
+    # OpenAI API 配置（兼容 DeepSeek、通义千问等）
+    openai:
+        enabled: true
+        api-key: sk-ws-H.REMYIDY.6gps.MEQCIBrUcBO117ow6UIdwC1-sMY1gLV6umYUUGpgdBcGMF4vAiA6pkl5-merBJACT6qbJcjSJd8Eu7BQCAbnkTOMMVu6tg
+        base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
+        model-name: qwen-math-turbo
+        timeout-seconds: 60
+
+    # 兜底响应配置
+    fallback:
+        enabled: true
+        default-response: "我是智能助手，正在为你服务！"
+
+# Brave Search API 配置
+# 需要设置环境变量 BRAVE_API_KEY
+# 或者在这里申请：https://brave.com/search/api/
+brave:
+    search:
+        api-key: ${BRAVE_API_KEY:}
+
+# Resilience4j configuration
+resilience4j:
+  retry:
+    configs:
+      default:
+        max-attempts: 3
+        wait-duration: 1s
+        enable-exponential-backoff: true
+        exponential-backoff-multiplier: 2.0
+    instances:
+      ollamaService:
+        base-config: default
+  circuitbreaker:
+    configs:
+      default:
+        register-health-indicator: true
+        sliding-window-type: COUNT_BASED
+        sliding-window-size: 10
+        minimum-number-of-calls: 5
+        permitted-number-of-calls-in-half-open-state: 3
+        automatic-transition-from-open-to-half-open-enabled: true
+        wait-duration-in-open-state: 10s
+        failure-rate-threshold: 50
+    instances:
+      ollamaService:
+        base-config: default
+
+# Actuator configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,metrics
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    com.yupi.datacleaning: DEBUG
+    dev.langchain4j: WARN
+    io.github.resilience4j: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%X{traceId}] - %msg%n"

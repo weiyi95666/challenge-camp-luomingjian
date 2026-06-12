@@ -1,0 +1,51 @@
+### CUSTOM ###
+application-local.yml
+# .env 文件包含 API Key 等敏感信息，禁止入库
+.env
+
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### Generated Documents ###
+generated-docs/
+
+### Data Cleaning ###
+temp/
+outputs/
+*.csv
+
+### Frontend ###
+ai-code-helper-frontend/node_modules/
+ai-code-helper-frontend/dist/
+ai-code-helper-frontend/.DS_Store
