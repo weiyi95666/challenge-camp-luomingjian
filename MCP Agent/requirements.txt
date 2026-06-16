@@ -1,0 +1,6 @@
+flask
+python-dotenv
+requests
+urllib3<2.0
+beautifulsoup4
+lxml

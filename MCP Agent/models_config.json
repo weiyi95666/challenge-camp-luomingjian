@@ -1,0 +1,54 @@
+{
+  "providers": [
+    {
+      "name": "SiliconFlow",
+      "display_name": "硅基流动",
+      "api_url": "https://api.siliconflow.cn/v1/chat/completions",
+      "api_key_env": "LLM_API_KEY",
+      "models": [
+        {
+          "id": "deepseek-ai/DeepSeek-V3",
+          "display_name": "深度求索 DeepSeek-V3",
+          "description": "优秀的编程和推理能力"
+        },
+        {
+          "id": "Qwen/Qwen2.5-32B-Instruct",
+          "display_name": "通义千问 Qwen2.5-32B",
+          "description": "更强大的理解和推理能力"
+        },
+        {
+          "id": "Qwen/Qwen2.5-7B-Instruct",
+          "display_name": "通义千问 Qwen2.5-7B",
+          "description": "快速、高效的对话模型"
+        },
+        {
+          "id": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+          "display_name": "Llama 3.1-8B",
+          "description": "通用对话模型"
+        }
+      ]
+    },
+    {
+      "name": "OpenAI",
+      "display_name": "OpenAI",
+      "api_url": "https://api.openai.com/v1/chat/completions",
+      "api_key_env": "OPENAI_API_KEY",
+      "models": [
+        {
+          "id": "gpt-3.5-turbo",
+          "display_name": "GPT-3.5 Turbo",
+          "description": "快速、低成本的模型"
+        },
+        {
+          "id": "gpt-4",
+          "display_name": "GPT-4",
+          "description": "最强大的模型"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "provider": "SiliconFlow",
+    "model": "deepseek-ai/DeepSeek-V3"
+  }
+}

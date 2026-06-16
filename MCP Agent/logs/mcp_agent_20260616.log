@@ -1,0 +1,435 @@
+2026-06-16 00:30:33 - mcp_agent - INFO - 系统事件: 初始化 API 服务器
+2026-06-16 00:30:33 - mcp_agent - INFO - 系统事件: 初始化智能体
+2026-06-16 00:30:33 - mcp_agent - INFO - 配置加载完成，工具数量: 6
+2026-06-16 00:30:33 - mcp_agent - INFO - 系统事件: 智能体初始化完成
+2026-06-16 00:30:33 - mcp_agent - INFO - 系统事件: 启动 Web 服务器
+2026-06-16 00:55:46 - mcp_agent - INFO - 收到聊天请求: 我要去广州玩时间是一天，请给我规划方案...
+2026-06-16 00:55:46 - mcp_agent - INFO - 智能体重联网模式: 启用
+2026-06-16 00:55:46 - mcp_agent - INFO - 收到用户消息: 我要去广州玩时间是一天，请给我规划方案
+2026-06-16 00:55:46 - mcp_agent - INFO - 准备调用 LLM API - 模型: deepseek-ai/DeepSeek-V3, 消息数: 3
+2026-06-16 00:56:17 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: deepseek-ai/DeepSeek-V3)
+2026-06-16 00:56:17 - mcp_agent - INFO - 智能体回复: 广州一日游精华路线 主题经典景点 美食体验 上午老广州风情 1. 早餐 西关老字号推荐泮溪酒家点都德体验广式早茶虾饺叉烧包红米肠 2. 景点 陈家祠9:0010:00岭南建筑精华雕刻艺术超美门票10 ...
+2026-06-16 01:45:41 - mcp_agent - INFO - 收到用户消息: 你好，我叫小明
+2026-06-16 01:45:41 - mcp_agent - INFO - 准备调用 LLM API - 模型: deepseek-ai/DeepSeek-V3, 消息数: 2
+2026-06-16 01:45:41 - mcp_agent - ERROR - API 调用错误: HTTPSConnectionPool(host='api.siliconflow.cn', port=443): Max retries exceeded with url: /v1/chat/completions (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+Traceback (most recent call last):
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\connectionpool.py", line 713, in urlopen
+    self._prepare_proxy(conn)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\connectionpool.py", line 1015, in _prepare_proxy
+    conn.connect()
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\connection.py", line 369, in connect
+    self.sock = conn = self._connect_tls_proxy(hostname, conn)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\connection.py", line 510, in _connect_tls_proxy
+    ssl_context=ssl_context,
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\util\ssl_.py", line 462, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\util\ssl_.py", line 504, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock)
+  File "C:\Users\weiyi\AppData\Local\Programs\Python\Python37\lib\ssl.py", line 412, in wrap_socket
+    session=session
+  File "C:\Users\weiyi\AppData\Local\Programs\Python\Python37\lib\ssl.py", line 853, in _create
+    self.do_handshake()
+  File "C:\Users\weiyi\AppData\Local\Programs\Python\Python37\lib\ssl.py", line 1117, in do_handshake
+    self._sslobj.do_handshake()
+OSError: [Errno 0] Error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\adapters.py", line 497, in send
+    chunked=chunked,
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\connectionpool.py", line 803, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\util\retry.py", line 594, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.siliconflow.cn', port=443): Max retries exceeded with url: /v1/chat/completions (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\agent\llm_client.py", line 158, in chat
+    response = requests.post(api_url, headers=headers, json=payload, timeout=45)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='api.siliconflow.cn', port=443): Max retries exceeded with url: /v1/chat/completions (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+2026-06-16 01:45:41 - mcp_agent - ERROR - 处理消息时出错: unhashable type: 'slice'
+Traceback (most recent call last):
+  File "agent_with_memory.py", line 198, in process_message
+    log_agent_response(response)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\logger.py", line 107, in log_agent_response
+    logger.info(f"智能体回复: {response[:100]}{'...' if len(response) > 100 else ''}")
+TypeError: unhashable type: 'slice'
+2026-06-16 01:45:41 - mcp_agent - INFO - 智能体回复: 抱歉，处理您的消息时发生了错误，请稍后再试。
+2026-06-16 01:45:41 - mcp_agent - INFO - 收到用户消息: 我叫什么名字？
+2026-06-16 01:45:41 - mcp_agent - INFO - 准备调用 LLM API - 模型: deepseek-ai/DeepSeek-V3, 消息数: 4
+2026-06-16 01:45:41 - mcp_agent - ERROR - API 调用错误: HTTPSConnectionPool(host='api.siliconflow.cn', port=443): Max retries exceeded with url: /v1/chat/completions (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+Traceback (most recent call last):
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\connectionpool.py", line 713, in urlopen
+    self._prepare_proxy(conn)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\connectionpool.py", line 1015, in _prepare_proxy
+    conn.connect()
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\connection.py", line 369, in connect
+    self.sock = conn = self._connect_tls_proxy(hostname, conn)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\connection.py", line 510, in _connect_tls_proxy
+    ssl_context=ssl_context,
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\util\ssl_.py", line 462, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\util\ssl_.py", line 504, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock)
+  File "C:\Users\weiyi\AppData\Local\Programs\Python\Python37\lib\ssl.py", line 412, in wrap_socket
+    session=session
+  File "C:\Users\weiyi\AppData\Local\Programs\Python\Python37\lib\ssl.py", line 853, in _create
+    self.do_handshake()
+  File "C:\Users\weiyi\AppData\Local\Programs\Python\Python37\lib\ssl.py", line 1117, in do_handshake
+    self._sslobj.do_handshake()
+OSError: [Errno 0] Error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\adapters.py", line 497, in send
+    chunked=chunked,
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\connectionpool.py", line 803, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\util\retry.py", line 594, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.siliconflow.cn', port=443): Max retries exceeded with url: /v1/chat/completions (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\agent\llm_client.py", line 158, in chat
+    response = requests.post(api_url, headers=headers, json=payload, timeout=45)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='api.siliconflow.cn', port=443): Max retries exceeded with url: /v1/chat/completions (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+2026-06-16 01:45:42 - mcp_agent - ERROR - 处理消息时出错: unhashable type: 'slice'
+Traceback (most recent call last):
+  File "agent_with_memory.py", line 198, in process_message
+    log_agent_response(response)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\logger.py", line 107, in log_agent_response
+    logger.info(f"智能体回复: {response[:100]}{'...' if len(response) > 100 else ''}")
+TypeError: unhashable type: 'slice'
+2026-06-16 01:45:42 - mcp_agent - INFO - 智能体回复: 抱歉，处理您的消息时发生了错误，请稍后再试。
+2026-06-16 01:45:42 - mcp_agent - INFO - 收到用户消息: 记住，我喜欢蓝色
+2026-06-16 01:45:42 - mcp_agent - INFO - 准备调用 LLM API - 模型: deepseek-ai/DeepSeek-V3, 消息数: 6
+2026-06-16 01:45:42 - mcp_agent - ERROR - API 调用错误: HTTPSConnectionPool(host='api.siliconflow.cn', port=443): Max retries exceeded with url: /v1/chat/completions (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+Traceback (most recent call last):
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\connectionpool.py", line 713, in urlopen
+    self._prepare_proxy(conn)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\connectionpool.py", line 1015, in _prepare_proxy
+    conn.connect()
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\connection.py", line 369, in connect
+    self.sock = conn = self._connect_tls_proxy(hostname, conn)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\connection.py", line 510, in _connect_tls_proxy
+    ssl_context=ssl_context,
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\util\ssl_.py", line 462, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\util\ssl_.py", line 504, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock)
+  File "C:\Users\weiyi\AppData\Local\Programs\Python\Python37\lib\ssl.py", line 412, in wrap_socket
+    session=session
+  File "C:\Users\weiyi\AppData\Local\Programs\Python\Python37\lib\ssl.py", line 853, in _create
+    self.do_handshake()
+  File "C:\Users\weiyi\AppData\Local\Programs\Python\Python37\lib\ssl.py", line 1117, in do_handshake
+    self._sslobj.do_handshake()
+OSError: [Errno 0] Error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\adapters.py", line 497, in send
+    chunked=chunked,
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\connectionpool.py", line 803, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\util\retry.py", line 594, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.siliconflow.cn', port=443): Max retries exceeded with url: /v1/chat/completions (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\agent\llm_client.py", line 158, in chat
+    response = requests.post(api_url, headers=headers, json=payload, timeout=45)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='api.siliconflow.cn', port=443): Max retries exceeded with url: /v1/chat/completions (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+2026-06-16 01:45:42 - mcp_agent - ERROR - 处理消息时出错: unhashable type: 'slice'
+Traceback (most recent call last):
+  File "agent_with_memory.py", line 198, in process_message
+    log_agent_response(response)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\logger.py", line 107, in log_agent_response
+    logger.info(f"智能体回复: {response[:100]}{'...' if len(response) > 100 else ''}")
+TypeError: unhashable type: 'slice'
+2026-06-16 01:45:42 - mcp_agent - INFO - 智能体回复: 抱歉，处理您的消息时发生了错误，请稍后再试。
+2026-06-16 01:45:42 - mcp_agent - INFO - 收到用户消息: 我喜欢什么颜色？
+2026-06-16 01:45:42 - mcp_agent - INFO - 准备调用 LLM API - 模型: deepseek-ai/DeepSeek-V3, 消息数: 8
+2026-06-16 01:45:42 - mcp_agent - ERROR - API 调用错误: HTTPSConnectionPool(host='api.siliconflow.cn', port=443): Max retries exceeded with url: /v1/chat/completions (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+Traceback (most recent call last):
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\connectionpool.py", line 713, in urlopen
+    self._prepare_proxy(conn)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\connectionpool.py", line 1015, in _prepare_proxy
+    conn.connect()
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\connection.py", line 369, in connect
+    self.sock = conn = self._connect_tls_proxy(hostname, conn)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\connection.py", line 510, in _connect_tls_proxy
+    ssl_context=ssl_context,
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\util\ssl_.py", line 462, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\util\ssl_.py", line 504, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock)
+  File "C:\Users\weiyi\AppData\Local\Programs\Python\Python37\lib\ssl.py", line 412, in wrap_socket
+    session=session
+  File "C:\Users\weiyi\AppData\Local\Programs\Python\Python37\lib\ssl.py", line 853, in _create
+    self.do_handshake()
+  File "C:\Users\weiyi\AppData\Local\Programs\Python\Python37\lib\ssl.py", line 1117, in do_handshake
+    self._sslobj.do_handshake()
+OSError: [Errno 0] Error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\adapters.py", line 497, in send
+    chunked=chunked,
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\connectionpool.py", line 803, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\util\retry.py", line 594, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.siliconflow.cn', port=443): Max retries exceeded with url: /v1/chat/completions (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\agent\llm_client.py", line 158, in chat
+    response = requests.post(api_url, headers=headers, json=payload, timeout=45)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='api.siliconflow.cn', port=443): Max retries exceeded with url: /v1/chat/completions (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+2026-06-16 01:45:42 - mcp_agent - ERROR - 处理消息时出错: unhashable type: 'slice'
+Traceback (most recent call last):
+  File "agent_with_memory.py", line 198, in process_message
+    log_agent_response(response)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\logger.py", line 107, in log_agent_response
+    logger.info(f"智能体回复: {response[:100]}{'...' if len(response) > 100 else ''}")
+TypeError: unhashable type: 'slice'
+2026-06-16 01:45:42 - mcp_agent - INFO - 智能体回复: 抱歉，处理您的消息时发生了错误，请稍后再试。
+2026-06-16 01:49:24 - mcp_agent - INFO - 系统事件: 初始化带记忆系统的 API 服务器
+2026-06-16 01:49:24 - mcp_agent - INFO - 系统事件: 启动带记忆系统的 Web 服务器
+2026-06-16 01:55:57 - mcp_agent - INFO - 系统事件: 初始化 API 服务器
+2026-06-16 01:55:57 - mcp_agent - INFO - 系统事件: 初始化智能体
+2026-06-16 01:55:57 - mcp_agent - INFO - 配置加载完成，工具数量: 6
+2026-06-16 01:55:57 - mcp_agent - INFO - 系统事件: 智能体初始化完成
+2026-06-16 01:55:57 - mcp_agent - INFO - 系统事件: 启动 Web 服务器
+2026-06-16 01:58:31 - mcp_agent - INFO - 响应模式已切换为: deep
+2026-06-16 02:05:31 - mcp_agent - INFO - 系统事件: 初始化 API 服务器
+2026-06-16 02:05:31 - mcp_agent - INFO - 系统事件: 初始化智能体
+2026-06-16 02:05:31 - mcp_agent - INFO - 配置加载完成，工具数量: 6
+2026-06-16 02:05:31 - mcp_agent - INFO - 系统事件: 智能体初始化完成
+2026-06-16 02:05:31 - mcp_agent - INFO - 系统事件: 启动 Web 服务器
+2026-06-16 02:11:01 - mcp_agent - INFO - 系统事件: 初始化 API 服务器
+2026-06-16 02:11:01 - mcp_agent - INFO - 系统事件: 初始化智能体
+2026-06-16 02:11:01 - mcp_agent - INFO - 配置加载完成，工具数量: 6
+2026-06-16 02:11:01 - mcp_agent - INFO - 系统事件: 智能体初始化完成
+2026-06-16 02:11:01 - mcp_agent - INFO - 系统事件: 启动 Web 服务器
+2026-06-16 02:12:35 - mcp_agent - INFO - 收到聊天请求: 给我规划广州一日游..., 响应模式: fast
+2026-06-16 02:12:35 - mcp_agent - INFO - 智能体重联网模式: 启用
+2026-06-16 02:12:35 - mcp_agent - INFO - 收到用户消息: 给我规划广州一日游
+2026-06-16 02:12:35 - mcp_agent - INFO - 准备调用 LLM API - 模型: deepseek-ai/DeepSeek-V3, 消息数: 3
+2026-06-16 02:12:35 - mcp_agent - ERROR - API 调用错误: HTTPSConnectionPool(host='api.siliconflow.cn', port=443): Max retries exceeded with url: /v1/chat/completions (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+Traceback (most recent call last):
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\connectionpool.py", line 713, in urlopen
+    self._prepare_proxy(conn)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\connectionpool.py", line 1015, in _prepare_proxy
+    conn.connect()
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\connection.py", line 369, in connect
+    self.sock = conn = self._connect_tls_proxy(hostname, conn)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\connection.py", line 510, in _connect_tls_proxy
+    ssl_context=ssl_context,
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\util\ssl_.py", line 462, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\util\ssl_.py", line 504, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock)
+  File "C:\Users\weiyi\AppData\Local\Programs\Python\Python37\lib\ssl.py", line 412, in wrap_socket
+    session=session
+  File "C:\Users\weiyi\AppData\Local\Programs\Python\Python37\lib\ssl.py", line 853, in _create
+    self.do_handshake()
+  File "C:\Users\weiyi\AppData\Local\Programs\Python\Python37\lib\ssl.py", line 1117, in do_handshake
+    self._sslobj.do_handshake()
+OSError: [Errno 0] Error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\adapters.py", line 497, in send
+    chunked=chunked,
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\connectionpool.py", line 803, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\urllib3\util\retry.py", line 594, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.siliconflow.cn', port=443): Max retries exceeded with url: /v1/chat/completions (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\agent\llm_client.py", line 158, in chat
+    response = requests.post(api_url, headers=headers, json=payload, timeout=45)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\.venv\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='api.siliconflow.cn', port=443): Max retries exceeded with url: /v1/chat/completions (Caused by ProxyError('Cannot connect to proxy.', OSError(0, 'Error')))
+2026-06-16 02:12:35 - mcp_agent - INFO - 智能体回复: 抱歉我连接 API 时遇到了问题: HTTPSConnectionPool(hostapi.siliconflow.cn, port443): Max retries exceeded with ur...
+2026-06-16 02:15:23 - mcp_agent - INFO - 系统事件: 开始 API 连接测试
+2026-06-16 02:15:23 - mcp_agent - INFO - 准备调用 LLM API - 模型: deepseek-ai/DeepSeek-V3, 消息数: 1
+2026-06-16 02:15:29 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: deepseek-ai/DeepSeek-V3)
+2026-06-16 02:15:29 - mcp_agent - INFO - 系统事件: 初始化智能体
+2026-06-16 02:15:29 - mcp_agent - INFO - 配置加载完成，工具数量: 6
+2026-06-16 02:15:29 - mcp_agent - INFO - 系统事件: 智能体初始化完成
+2026-06-16 02:15:29 - mcp_agent - INFO - 收到用户消息: 天气 北京
+2026-06-16 02:15:29 - mcp_agent - INFO - 选择工具: weather
+2026-06-16 02:15:29 - mcp_agent - INFO - 工具参数: {'location': '北京'}
+2026-06-16 02:15:30 - mcp_agent - INFO - 工具调用成功 - weather
+2026-06-16 02:15:30 - mcp_agent - INFO - 智能体回复 (使用工具: weather): 🌤️ 北京的天气：
+• 天气状况：多云
+• 温度：21.7°C
+• 湿度：95%
+• 风速：5.1km/h
+
+数据来源：Open-Meteo
+2026-06-16 02:15:30 - mcp_agent - INFO - 收到用户消息: 你好，你能做什么？
+2026-06-16 02:15:30 - mcp_agent - INFO - 准备调用 LLM API - 模型: deepseek-ai/DeepSeek-V3, 消息数: 5
+2026-06-16 02:15:39 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: deepseek-ai/DeepSeek-V3)
+2026-06-16 02:15:39 - mcp_agent - INFO - 智能体回复: 您好我是您的 MCP 智能出行助手专注于提供以下专业服务 核心功能 1. 智能路线规划 驾车公交步行导航基于高德地图实时数据 提供高速路况收费站隧道等关键节点提示 生成详细分段行程与出行建议 2. 天...
+2026-06-16 02:15:54 - mcp_agent - INFO - 系统事件: 初始化 API 服务器
+2026-06-16 02:15:54 - mcp_agent - INFO - 系统事件: 初始化智能体
+2026-06-16 02:15:54 - mcp_agent - INFO - 配置加载完成，工具数量: 6
+2026-06-16 02:15:54 - mcp_agent - INFO - 系统事件: 智能体初始化完成
+2026-06-16 02:15:54 - mcp_agent - INFO - 系统事件: 启动 Web 服务器
+2026-06-16 02:29:24 - mcp_agent - INFO - 智能体重联网模式: 启用
+2026-06-16 02:29:24 - mcp_agent - INFO - 联网模式已切换: 启用
+2026-06-16 02:29:25 - mcp_agent - INFO - 智能体重联网模式: 启用
+2026-06-16 02:29:25 - mcp_agent - INFO - 联网模式已切换: 启用
+2026-06-16 02:29:26 - mcp_agent - INFO - 智能体重联网模式: 启用
+2026-06-16 02:29:26 - mcp_agent - INFO - 联网模式已切换: 启用
+2026-06-16 02:29:27 - mcp_agent - INFO - 智能体重联网模式: 禁用
+2026-06-16 02:29:27 - mcp_agent - INFO - 联网模式已切换: 禁用
+2026-06-16 02:29:32 - mcp_agent - INFO - 收到聊天请求: 你好..., 响应模式: fast
+2026-06-16 02:29:32 - mcp_agent - INFO - 智能体重联网模式: 禁用
+2026-06-16 02:29:32 - mcp_agent - INFO - 收到用户消息: 你好
+2026-06-16 02:29:32 - mcp_agent - INFO - 准备调用 LLM API - 模型: deepseek-ai/DeepSeek-V3, 消息数: 3
+2026-06-16 02:29:49 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: deepseek-ai/DeepSeek-V3)
+2026-06-16 02:29:49 - mcp_agent - INFO - 智能体回复: 您好我是MCP智能出行助手很高兴为您服务 我可以帮您 规划出行路线驾车公交步行等 查询实时天气出发地目的地或沿途城市 保存重要信息路线规划天气数据等到本地文件 请告诉我您需要什么帮助 例如 从北京到上...
+2026-06-16 09:24:03 - mcp_agent - INFO - 系统事件: 初始化 API 服务器
+2026-06-16 09:24:03 - mcp_agent - INFO - 系统事件: 初始化智能体
+2026-06-16 09:24:03 - mcp_agent - INFO - 配置加载完成，工具数量: 6
+2026-06-16 09:24:03 - mcp_agent - INFO - 系统事件: 智能体初始化完成
+2026-06-16 09:24:03 - mcp_agent - INFO - 系统事件: 启动 Web 服务器
+2026-06-16 09:24:03 - mcp_agent - INFO - 收到聊天请求: ping..., 响应模式: fast
+2026-06-16 09:24:03 - mcp_agent - INFO - 智能体重联网模式: 启用
+2026-06-16 09:24:03 - mcp_agent - INFO - 收到用户消息: ping
+2026-06-16 09:24:03 - mcp_agent - INFO - 准备调用 LLM API - 模型: deepseek-ai/DeepSeek-V3, 消息数: 3
+2026-06-16 09:24:09 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: deepseek-ai/DeepSeek-V3)
+2026-06-16 09:24:09 - mcp_agent - INFO - 智能体回复: 您好我是您的MCP智能出行助手请问有什么可以帮您 如果您需要 路线规划例如驾车公交步行等 天气查询国内城市实时天气 信息保存将路线或天气保存为本地文件 请告诉我具体需求如广州到深圳的驾车路线或北京今天...
+2026-06-16 09:24:29 - mcp_agent - INFO - 系统事件: 初始化 API 服务器
+2026-06-16 09:24:29 - mcp_agent - INFO - 系统事件: 初始化智能体
+2026-06-16 09:24:29 - mcp_agent - INFO - 配置加载完成，工具数量: 6
+2026-06-16 09:24:29 - mcp_agent - INFO - 系统事件: 智能体初始化完成
+2026-06-16 09:24:29 - mcp_agent - INFO - 系统事件: 启动 Web 服务器
+2026-06-16 09:27:11 - mcp_agent - INFO - 智能体重联网模式: 禁用
+2026-06-16 09:27:11 - mcp_agent - INFO - 联网模式已切换: 禁用
+2026-06-16 09:27:15 - mcp_agent - INFO - 收到聊天请求: 你好..., 响应模式: fast
+2026-06-16 09:27:15 - mcp_agent - INFO - 智能体重联网模式: 禁用
+2026-06-16 09:27:15 - mcp_agent - INFO - 收到用户消息: 你好
+2026-06-16 09:27:15 - mcp_agent - INFO - 准备调用 LLM API - 模型: deepseek-ai/DeepSeek-V3, 消息数: 3
+2026-06-16 09:27:20 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: deepseek-ai/DeepSeek-V3)
+2026-06-16 09:27:20 - mcp_agent - INFO - 智能体回复: 您好我是MCP智能出行助手很高兴为您服务我可以帮您 1. 查询两地之间的驾车公交步行路线 2. 获取实时天气预报 3. 将重要信息保存为本地文件 您需要什么帮助呢比如 "从北京到上海自驾怎么走" "广...
+2026-06-16 09:27:35 - mcp_agent - INFO - 收到聊天请求: 你是什么模型..., 响应模式: fast
+2026-06-16 09:27:35 - mcp_agent - INFO - 智能体重联网模式: 禁用
+2026-06-16 09:27:35 - mcp_agent - INFO - 收到用户消息: 你是什么模型
+2026-06-16 09:27:35 - mcp_agent - INFO - 准备调用 LLM API - 模型: deepseek-ai/DeepSeek-V3, 消息数: 5
+2026-06-16 09:27:44 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: deepseek-ai/DeepSeek-V3)
+2026-06-16 09:27:44 - mcp_agent - INFO - 智能体回复: 我是MCP智能出行助手基于以下核心模块构建的专用AI 1. 功能架构 高德地图API深度整合实时路线规划交通数据 气象数据引擎中国气象局权威数据源 本地化文件管理系统支持.txt.md格式存储 2. ...
+2026-06-16 09:28:20 - mcp_agent - INFO - 收到聊天请求: 我叫智云..., 响应模式: fast
+2026-06-16 09:28:20 - mcp_agent - INFO - 智能体重联网模式: 禁用
+2026-06-16 09:28:20 - mcp_agent - INFO - 收到用户消息: 我叫智云
+2026-06-16 09:28:20 - mcp_agent - INFO - 准备调用 LLM API - 模型: deepseek-ai/DeepSeek-V3, 消息数: 7
+2026-06-16 09:28:31 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: deepseek-ai/DeepSeek-V3)
+2026-06-16 09:28:31 - mcp_agent - INFO - 智能体回复: 智云您好很高兴为您服务作为您的专属出行助手我可以为您提供以下专业支持 1. 个性化服务建议 根据历史记录智能推荐常去地点路线 重要行程自动生成备忘录文件 天气变化主动提醒 2. 当前可立即提供的帮助 ...
+2026-06-16 09:29:45 - mcp_agent - INFO - 收到聊天请求: 我叫什么名字..., 响应模式: fast
+2026-06-16 09:29:45 - mcp_agent - INFO - 智能体重联网模式: 禁用
+2026-06-16 09:29:45 - mcp_agent - INFO - 收到用户消息: 我叫什么名字
+2026-06-16 09:29:45 - mcp_agent - INFO - 准备调用 LLM API - 模型: deepseek-ai/DeepSeek-V3, 消息数: 7
+2026-06-16 09:29:50 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: deepseek-ai/DeepSeek-V3)
+2026-06-16 09:29:50 - mcp_agent - INFO - 智能体回复: 智云您好作为您的专属出行助手我始终牢记您的称呼您刚刚告知的名字是智云 需要我为您提供 1. 带个性化称呼的出行服务如"智云家的导航方案" 2. 创建专属出行档案 3. 记录常用地址如"智云公司家庭地址...
+2026-06-16 09:30:01 - mcp_agent - INFO - 响应模式已切换为: deep
+2026-06-16 09:30:03 - mcp_agent - INFO - 收到聊天请求: 你好..., 响应模式: deep
+2026-06-16 09:30:03 - mcp_agent - INFO - 智能体重联网模式: 禁用
+2026-06-16 09:30:03 - mcp_agent - INFO - 收到用户消息: 你好
+2026-06-16 09:30:03 - mcp_agent - INFO - 准备调用 LLM API - 模型: deepseek-ai/DeepSeek-V3, 消息数: 7
+2026-06-16 09:30:11 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: deepseek-ai/DeepSeek-V3)
+2026-06-16 09:30:11 - mcp_agent - INFO - 智能体回复: 智云您好很高兴再次为您服务作为您的专属出行助手我可以为您提供以下即时帮助 1. 出行规划 实时路况导航驾车公交步行 跨城路线含服务区提醒 2. 天气服务 精准到小时的天气预报 恶劣天气提前预警 3. ...
+2026-06-16 09:30:16 - mcp_agent - INFO - 响应模式已切换为: fast
+2026-06-16 09:30:22 - mcp_agent - INFO - 响应模式已切换为: deep
+2026-06-16 09:31:49 - mcp_agent - INFO - 收到聊天请求: 你的记忆多久会忘记我的名字..., 响应模式: deep
+2026-06-16 09:31:49 - mcp_agent - INFO - 智能体重联网模式: 禁用
+2026-06-16 09:31:49 - mcp_agent - INFO - 收到用户消息: 你的记忆多久会忘记我的名字
+2026-06-16 09:31:49 - mcp_agent - INFO - 准备调用 LLM API - 模型: deepseek-ai/DeepSeek-V3, 消息数: 7
+2026-06-16 09:32:00 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: deepseek-ai/DeepSeek-V3)
+2026-06-16 09:32:00 - mcp_agent - INFO - 智能体回复: 智云您无需担心作为您的专属出行助手我采用以下机制确保服务连贯性 1. 会话级记忆 当您说"我叫智云"时我会在整个对话过程中保持这个称呼如现在称您"智云" 2. 持续关联记忆需您授权 若您希望我长期记住...
+2026-06-16 09:35:33 - mcp_agent - INFO - 系统事件: 初始化 API 服务器
+2026-06-16 09:35:33 - mcp_agent - INFO - 系统事件: 初始化智能体
+2026-06-16 09:35:33 - mcp_agent - INFO - 配置加载完成，工具数量: 6
+2026-06-16 09:35:33 - mcp_agent - INFO - 系统事件: 智能体初始化完成
+2026-06-16 09:35:33 - mcp_agent - INFO - 系统事件: 启动 Web 服务器
+2026-06-16 09:37:26 - mcp_agent - INFO - 智能体重联网模式: 启用
+2026-06-16 09:37:26 - mcp_agent - INFO - 联网模式已切换: 启用
+2026-06-16 09:37:41 - mcp_agent - INFO - 收到聊天请求: 给我规划广州一日游..., 响应模式: deep
+2026-06-16 09:37:41 - mcp_agent - INFO - 智能体重联网模式: 启用
+2026-06-16 09:37:41 - mcp_agent - INFO - 收到用户消息: 给我规划广州一日游
+2026-06-16 09:37:41 - mcp_agent - INFO - 准备调用 LLM API - 模型: deepseek-ai/DeepSeek-V3, 消息数: 7
+2026-06-16 09:37:52 - mcp_agent - INFO - 收到聊天请求: 给我规划广州一日游..., 响应模式: deep
+2026-06-16 09:37:52 - mcp_agent - INFO - 智能体重联网模式: 启用
+2026-06-16 09:37:52 - mcp_agent - INFO - 收到用户消息: 给我规划广州一日游
+2026-06-16 09:37:52 - mcp_agent - INFO - 准备调用 LLM API - 模型: deepseek-ai/DeepSeek-V3, 消息数: 7
+2026-06-16 09:37:59 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: deepseek-ai/DeepSeek-V3)
+2026-06-16 09:37:59 - mcp_agent - INFO - 智能体回复: 1. 路线概览 广州一日游经典路线全程约40公里预计游玩时间810小时含景点停留时间 2. 主要行程安排 上午行程 1. 8:3010:00 越秀公园五羊雕像镇海楼 交通建议地铁2号线越秀公园站 2....
+2026-06-16 09:38:09 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: deepseek-ai/DeepSeek-V3)
+2026-06-16 09:38:09 - mcp_agent - INFO - 智能体回复: 1. 路线概览 广州一日游经典路线全程约50公里预计游览时间810小时含景点停留时间 2. 主要行程路线 1. 上午老城文化之旅 起点沙面岛欧陆风情建筑群建议游览1小时 步行10分钟至永庆坊西关骑楼粤...

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "3e9f169d16a2998dc58deac76527aaa2",
+    "content": "用户叫测试用户",
+    "metadata": {
+      "category": "identity"
+    },
+    "created_at": "2026-06-16T01:48:18.657594"
+  },
+  {
+    "id": "bac8f6b98db0fe65837202084627b275",
+    "content": "用户喜欢蓝色",
+    "metadata": {
+      "category": "preference"
+    },
+    "created_at": "2026-06-16T01:48:18.658742"
+  },
+  {
+    "id": "cc1ab4e2124d56e0cb06a31b2cae1871",
+    "content": "用户住在北京",
+    "metadata": {
+      "category": "location"
+    },
+    "created_at": "2026-06-16T01:48:18.659753"
+  },
+  {
+    "id": "16fa7e23be36b1f2307a0fb2d84f8141",
+    "content": "用户的生日是1月1日",
+    "metadata": {
+      "category": "personal"
+    },
+    "created_at": "2026-06-16T01:48:18.659753"
+  },
+  {
+    "id": "f160ecccd50bed6d40fc62b5f3c73522",
+    "content": "用户会说中文和英文",
+    "metadata": {
+      "category": "skill"
+    },
+    "created_at": "2026-06-16T01:48:18.661127"
+  }
+]

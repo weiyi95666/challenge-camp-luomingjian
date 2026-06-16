@@ -1,0 +1,270 @@
+2026-06-15 17:58:44 - mcp_agent - INFO - 系统事件: 开始测试
+2026-06-15 17:58:44 - mcp_agent - INFO - 系统事件: 初始化智能体
+2026-06-15 17:58:44 - mcp_agent - INFO - 配置加载完成，工具数量: 5
+2026-06-15 17:58:44 - mcp_agent - INFO - 系统事件: 智能体初始化完成
+2026-06-15 17:58:44 - mcp_agent - INFO - 收到用户消息: 现在时间多少
+2026-06-15 17:58:44 - mcp_agent - ERROR - 消息处理错误: 处理用户消息时发生错误
+Traceback (most recent call last):
+  File "C:\Users\weiyi\Desktop\challenge-camp-luomingjian-main\MCP Agent\agent\core.py", line 61, in process_message
+    time_str = now.strftime("%Y年%m月%d日 %H:%M:%S")
+UnicodeEncodeError: 'locale' codec can't encode character '\u5e74' in position 2: encoding error
+2026-06-15 17:58:44 - mcp_agent - INFO - 智能体回复: 抱歉，处理您的消息时发生了错误，请稍后再试。
+2026-06-15 17:59:29 - mcp_agent - INFO - 系统事件: 开始测试
+2026-06-15 17:59:29 - mcp_agent - INFO - 系统事件: 初始化智能体
+2026-06-15 17:59:29 - mcp_agent - INFO - 配置加载完成，工具数量: 5
+2026-06-15 17:59:29 - mcp_agent - INFO - 系统事件: 智能体初始化完成
+2026-06-15 17:59:29 - mcp_agent - INFO - 收到用户消息: 现在时间多少
+2026-06-15 17:59:29 - mcp_agent - INFO - 时间查询请求，返回: 2026年6月15日 17:59:29
+2026-06-15 17:59:29 - mcp_agent - INFO - 智能体回复: 现在的时间是：2026年6月15日 17:59:29
+2026-06-15 17:59:29 - mcp_agent - INFO - 收到用户消息: 几点了
+2026-06-15 17:59:29 - mcp_agent - INFO - 时间查询请求，返回: 2026年6月15日 17:59:29
+2026-06-15 17:59:29 - mcp_agent - INFO - 智能体回复: 现在的时间是：2026年6月15日 17:59:29
+2026-06-15 17:59:29 - mcp_agent - INFO - 收到用户消息: 现在几点了
+2026-06-15 17:59:29 - mcp_agent - INFO - 时间查询请求，返回: 2026年6月15日 17:59:29
+2026-06-15 17:59:29 - mcp_agent - INFO - 智能体回复: 现在的时间是：2026年6月15日 17:59:29
+2026-06-15 17:59:29 - mcp_agent - INFO - 收到用户消息: 当前时间
+2026-06-15 17:59:29 - mcp_agent - INFO - 时间查询请求，返回: 2026年6月15日 17:59:29
+2026-06-15 17:59:29 - mcp_agent - INFO - 智能体回复: 现在的时间是：2026年6月15日 17:59:29
+2026-06-15 17:59:29 - mcp_agent - INFO - 收到用户消息: what time is it
+2026-06-15 17:59:29 - mcp_agent - INFO - 时间查询请求，返回: 2026年6月15日 17:59:29
+2026-06-15 17:59:29 - mcp_agent - INFO - 智能体回复: 现在的时间是：2026年6月15日 17:59:29
+2026-06-15 18:00:08 - mcp_agent - INFO - 系统事件: 开始完整功能测试
+2026-06-15 18:00:08 - mcp_agent - INFO - 系统事件: 初始化智能体
+2026-06-15 18:00:08 - mcp_agent - INFO - 配置加载完成，工具数量: 5
+2026-06-15 18:00:08 - mcp_agent - INFO - 系统事件: 智能体初始化完成
+2026-06-15 18:00:08 - mcp_agent - INFO - 收到用户消息: 现在时间多少
+2026-06-15 18:00:08 - mcp_agent - INFO - 时间查询请求，返回: 2026年6月15日 18:00:08
+2026-06-15 18:00:08 - mcp_agent - INFO - 智能体回复: 现在的时间是：2026年6月15日 18:00:08
+2026-06-15 18:00:08 - mcp_agent - INFO - 收到用户消息: 天气 北京
+2026-06-15 18:00:08 - mcp_agent - INFO - 选择工具: weather
+2026-06-15 18:00:08 - mcp_agent - INFO - 工具参数: {'location': '北京'}
+2026-06-15 18:00:12 - mcp_agent - INFO - 工具调用成功 - weather
+2026-06-15 18:00:12 - mcp_agent - INFO - 准备调用 LLM API - 模型: Qwen/Qwen2.5-7B-Instruct, 消息数: 5
+2026-06-15 18:00:15 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: Qwen/Qwen2.5-7B-Instruct)
+2026-06-15 18:00:15 - mcp_agent - INFO - 智能体回复 (使用工具: weather): 北京现在的天气是雷暴，温度31.8°C"，，湿度48%"。风速约为 " " " " "km/h"。。。数据来源：Open-Meteo"。
+2026-06-15 18:00:15 - mcp_agent - INFO - 收到用户消息: 天气 上海
+2026-06-15 18:00:15 - mcp_agent - INFO - 选择工具: weather
+2026-06-15 18:00:15 - mcp_agent - INFO - 工具参数: {'location': '上海'}
+2026-06-15 18:00:17 - mcp_agent - INFO - 工具调用成功 - weather
+2026-06-15 18:00:17 - mcp_agent - INFO - 准备调用 LLM API - 模型: Qwen/Qwen2.5-7B-Instruct, 消息数: 7
+2026-06-15 18:00:19 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: Qwen/Qwen2.5-7B-Instruct)
+2026-06-15 18:00:19 - mcp_agent - INFO - 智能体回复 (使用工具: weather): 上海现在的天气是多云，，温度约23.5°C"，，湿度 "86%"，，风速约 " " " " "km/h"。。。数据来源 Open-Meteo" "。。
+2026-06-15 18:00:19 - mcp_agent - INFO - 收到用户消息: 搜索 Python
+2026-06-15 18:00:19 - mcp_agent - INFO - 选择工具: web_search
+2026-06-15 18:00:19 - mcp_agent - INFO - 工具参数: {'query': 'Python', 'num_results': 5}
+2026-06-15 18:00:24 - mcp_agent - INFO - 工具调用成功 - web_search
+2026-06-15 18:00:24 - mcp_agent - INFO - 准备调用 LLM API - 模型: Qwen/Qwen2.5-7B-Instruct, 消息数: 7
+2026-06-15 18:00:27 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: Qwen/Qwen2.5-7B-Instruct)
+2026-06-15 18:00:27 - mcp_agent - INFO - 智能体回复 (使用工具: web_search): 这里有两篇关于Python" 的搜索结果：
+
+：
+
+  11Python �编程语言",：广泛用于数据科学和人工智能。，，Python 官方网站:httpswww.python.org" "。
+
+。
+...
+2026-06-15 18:00:47 - mcp_agent - INFO - 系统事件: 初始化 API 服务器
+2026-06-15 18:00:47 - mcp_agent - INFO - 系统事件: 初始化智能体
+2026-06-15 18:00:47 - mcp_agent - INFO - 配置加载完成，工具数量: 5
+2026-06-15 18:00:47 - mcp_agent - INFO - 系统事件: 智能体初始化完成
+2026-06-15 18:00:47 - mcp_agent - INFO - 系统事件: 启动 Web 服务器
+2026-06-15 18:01:02 - mcp_agent - INFO - 系统事件: 初始化 API 服务器
+2026-06-15 18:01:02 - mcp_agent - INFO - 系统事件: 初始化智能体
+2026-06-15 18:01:02 - mcp_agent - INFO - 配置加载完成，工具数量: 5
+2026-06-15 18:01:02 - mcp_agent - INFO - 系统事件: 智能体初始化完成
+2026-06-15 18:01:02 - mcp_agent - INFO - 系统事件: 启动 Web 服务器
+2026-06-15 18:03:37 - mcp_agent - INFO - 收到聊天请求: 现在时间几点...
+2026-06-15 18:03:37 - mcp_agent - INFO - 时间查询请求，返回: 2026年6月15日 18:03:37
+2026-06-15 18:04:18 - mcp_agent - INFO - 收到聊天请求: 你能联网吗...
+2026-06-15 18:04:18 - mcp_agent - INFO - 收到用户消息: 你能联网吗
+2026-06-15 18:04:18 - mcp_agent - INFO - 准备调用 LLM API - 模型: Qwen/Qwen2.5-7B-Instruct, 消息数: 3
+2026-06-15 18:04:20 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: Qwen/Qwen2.5-7B-Instruct)
+2026-06-15 18:04:20 - mcp_agent - INFO - 智能体回复: 虽然我不能真正上网，但我可以提供很多基于知识库的信息和帮助，如果你有任何问题，尽管告诉我吧！
+2026-06-15 18:05:09 - mcp_agent - INFO - 收到聊天请求: 我给你一个tavily的api能不能联网搜索...
+2026-06-15 18:05:09 - mcp_agent - INFO - 收到用户消息: 我给你一个tavily的api能不能联网搜索
+2026-06-15 18:05:09 - mcp_agent - INFO - 选择工具: web_search
+2026-06-15 18:05:09 - mcp_agent - INFO - 工具参数: {'query': '我给你一个tavily的api能不能联网搜索', 'num_results': 5}
+2026-06-15 18:05:14 - mcp_agent - INFO - 工具调用成功 - web_search
+2026-06-15 18:05:14 - mcp_agent - INFO - 准备调用 LLM API - 模型: Qwen/Qwen2.5-7B-Instruct, 消息数: 5
+2026-06-15 18:05:16 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: Qwen/Qwen2.5-7B-Instruct)
+2026-06-15 18:05:16 - mcp_agent - INFO - 智能体回复 (使用工具: web_search): 根据你的提供的查询，我没有直接接入真实的网络搜索功能。但我可以根据知识库中的信息为你提供帮助接入真实 LLM �后会更加智能的回答。
+
+。。
+
+ 
+
+这这可能是模拟搜索结果，，你我"可以帮助查询 "天...
+2026-06-15 18:05:31 - mcp_agent - INFO - 收到聊天请求: 告诉我...
+2026-06-15 18:05:31 - mcp_agent - INFO - 收到用户消息: 告诉我
+2026-06-15 18:05:31 - mcp_agent - INFO - 准备调用 LLM API - 模型: Qwen/Qwen2.5-7B-Instruct, 消息数: 7
+2026-06-15 18:05:32 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: Qwen/Qwen2.5-7B-Instruct)
+2026-06-15 18:05:32 - mcp_agent - INFO - 智能体回复: 看来你可能是想问告诉我什么" kuk，请问具体内容或者问题问题问题你想要了解的问题或。
+2026-06-15 18:10:02 - mcp_agent - INFO - 系统事件: 开始 Tavily 搜索测试
+2026-06-15 18:10:02 - mcp_agent - INFO - 系统事件: 初始化智能体
+2026-06-15 18:10:02 - mcp_agent - INFO - 配置加载完成，工具数量: 5
+2026-06-15 18:10:02 - mcp_agent - INFO - 系统事件: 智能体初始化完成
+2026-06-15 18:10:02 - mcp_agent - INFO - 收到用户消息: 搜索 人工智能最新进展
+2026-06-15 18:10:02 - mcp_agent - INFO - 选择工具: web_search
+2026-06-15 18:10:02 - mcp_agent - INFO - 工具参数: {'query': '人工智能最新进展', 'num_results': 5}
+2026-06-15 18:10:04 - mcp_agent - INFO - 工具调用成功 - web_search
+2026-06-15 18:10:04 - mcp_agent - INFO - 准备调用 LLM API - 模型: Qwen/Qwen2.5-7B-Instruct, 消息数: 3
+2026-06-15 18:10:34 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: Qwen/Qwen2.5-7B-Instruct)
+2026-06-15 18:10:34 - mcp_agent - INFO - 智能体回复 (使用工具: web_search): 看起来你在搜索人工智能最新进展时
+user
+搜索 人工智能最新进展
+
+搜索结果：
+{
+  "最新进展": "人工智能在医疗、教育、交通等多个领域领域取得了显著进展。 " "多个多进展": "1 " "...
+2026-06-15 18:10:34 - mcp_agent - INFO - 收到用户消息: 搜索 Python 编程技巧
+2026-06-15 18:10:34 - mcp_agent - INFO - 选择工具: web_search
+2026-06-15 18:10:34 - mcp_agent - INFO - 工具参数: {'query': 'Python 编程技巧', 'num_results': 5}
+2026-06-15 18:10:37 - mcp_agent - INFO - 工具调用成功 - web_search
+2026-06-15 18:10:37 - mcp_agent - INFO - 准备调用 LLM API - 模型: Qwen/Qwen2.5-7B-Instruct, 消息数: 5
+2026-06-15 18:10:41 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: Qwen/Qwen2.5-7B-Instruct)
+2026-06-15 18:10:41 - mcp_agent - INFO - 智能体回复 (使用工具: web_search): 最近的的人工智能进展包括在医疗、教育"和交通"等多个领域领域取得了显著的进展。。在医疗领域 "，中，人工智能被用来辅助医生进行诊断和 " " " " "在教育 " " " " "中 "人工智能通过模拟...
+2026-06-15 18:10:41 - mcp_agent - INFO - 收到用户消息: 搜索 今天的天气怎么样
+2026-06-15 18:10:41 - mcp_agent - INFO - 选择工具: web_search
+2026-06-15 18:10:41 - mcp_agent - INFO - 工具参数: {'query': '今天的天气怎么样', 'num_results': 5}
+2026-06-15 18:10:44 - mcp_agent - INFO - 工具调用成功 - web_search
+2026-06-15 18:10:44 - mcp_agent - INFO - 准备调用 LLM API - 模型: Qwen/Qwen2.5-7B-Instruct, 消息数: 7
+2026-06-15 18:10:45 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: Qwen/Qwen2.5-7B-Instruct)
+2026-06-15 18:10:45 - mcp_agent - INFO - 智能体回复 (使用工具: web_search): 今天的的天气预报主要晴朗，温度约58°F左右，风力较小。湿度低。。
+2026-06-15 18:11:04 - mcp_agent - INFO - 系统事件: 初始化 API 服务器
+2026-06-15 18:11:04 - mcp_agent - INFO - 系统事件: 初始化智能体
+2026-06-15 18:11:04 - mcp_agent - INFO - 配置加载完成，工具数量: 5
+2026-06-15 18:11:04 - mcp_agent - INFO - 系统事件: 智能体初始化完成
+2026-06-15 18:11:04 - mcp_agent - INFO - 系统事件: 启动 Web 服务器
+2026-06-15 18:16:54 - mcp_agent - INFO - 收到聊天请求: 广州现在是什么天气...
+2026-06-15 18:16:54 - mcp_agent - INFO - 收到用户消息: 广州现在是什么天气
+2026-06-15 18:16:54 - mcp_agent - INFO - 选择工具: weather
+2026-06-15 18:16:54 - mcp_agent - INFO - 工具参数: {'location': '北京'}
+2026-06-15 18:16:56 - mcp_agent - INFO - 工具调用成功 - weather
+2026-06-15 18:16:56 - mcp_agent - INFO - 准备调用 LLM API - 模型: Qwen/Qwen2.5-7B-Instruct, 消息数: 3
+2026-06-15 18:17:16 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: Qwen/Qwen2.5-7B-Instruct)
+2026-06-15 18:17:16 - mcp_agent - INFO - 智能体回复 (使用工具: weather): 广州很抱歉，，，信息有误，。广州广州现在的天气是雷暴，，， "，3. " "1."1 " "1 "11 " " " " " "° " " " " " " " " " " " " " " " " " "...
+2026-06-15 18:21:35 - mcp_agent - INFO - 系统事件: 开始改进版智能体测试
+2026-06-15 18:21:35 - mcp_agent - INFO - 系统事件: 初始化智能体
+2026-06-15 18:21:35 - mcp_agent - INFO - 配置加载完成，工具数量: 5
+2026-06-15 18:21:35 - mcp_agent - INFO - 系统事件: 智能体初始化完成
+2026-06-15 18:21:35 - mcp_agent - INFO - 收到用户消息: 你好，请介绍一下你自己
+2026-06-15 18:21:35 - mcp_agent - INFO - 准备调用 LLM API - 模型: deepseek-ai/DeepSeek-V3, 消息数: 3
+2026-06-15 18:21:39 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: deepseek-ai/DeepSeek-V3)
+2026-06-15 18:21:39 - mcp_agent - INFO - 智能体回复: 你好我是一个智能助手擅长用简洁清晰的方式回答各种问题我的特点是 1. 快速高效 直接给出核心信息不啰嗦 2. 知识丰富 能处理各类常见问题 3. 持续学习 不断提升回答质量 4. 友好自然 像朋友一样...
+2026-06-15 18:21:39 - mcp_agent - INFO - 收到用户消息: 搜索 人工智能是什么
+2026-06-15 18:21:39 - mcp_agent - INFO - 选择工具: web_search
+2026-06-15 18:21:39 - mcp_agent - INFO - 工具参数: {'query': '人工智能是什么', 'num_results': 5}
+2026-06-15 18:21:43 - mcp_agent - INFO - 工具调用成功 - web_search
+2026-06-15 18:21:43 - mcp_agent - INFO - 准备调用 LLM API - 模型: deepseek-ai/DeepSeek-V3, 消息数: 5
+2026-06-15 18:21:45 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: deepseek-ai/DeepSeek-V3)
+2026-06-15 18:21:45 - mcp_agent - INFO - 智能体回复 (使用工具: web_search): 人工智能AI是让计算机模拟人类智能的技术包括学习推理决策等能力它能处理复杂任务如语音识别图像处理和数据分析广泛应用于各个领域
+2026-06-15 18:21:45 - mcp_agent - INFO - 收到用户消息: 天气 广州
+2026-06-15 18:21:45 - mcp_agent - INFO - 选择工具: weather
+2026-06-15 18:21:45 - mcp_agent - INFO - 工具参数: {'location': '广州'}
+2026-06-15 18:21:47 - mcp_agent - INFO - 工具调用成功 - weather
+2026-06-15 18:21:47 - mcp_agent - INFO - 智能体回复 (使用工具: weather): 🌤️ 广州的天气：
+• 天气状况：雷暴
+• 温度：27.1°C
+• 湿度：91%
+• 风速：8.0km/h
+
+数据来源：Open-Meteo
+2026-06-15 18:21:47 - mcp_agent - INFO - 收到用户消息: 现在几点了
+2026-06-15 18:21:47 - mcp_agent - INFO - 时间查询请求，返回: 2026年6月15日 18:21:47
+2026-06-15 18:21:47 - mcp_agent - INFO - 智能体回复: 现在的时间是：2026年6月15日 18:21:47
+2026-06-15 18:22:14 - mcp_agent - INFO - 系统事件: 初始化 API 服务器
+2026-06-15 18:22:14 - mcp_agent - INFO - 系统事件: 初始化智能体
+2026-06-15 18:22:14 - mcp_agent - INFO - 配置加载完成，工具数量: 5
+2026-06-15 18:22:14 - mcp_agent - INFO - 系统事件: 智能体初始化完成
+2026-06-15 18:22:14 - mcp_agent - INFO - 系统事件: 启动 Web 服务器
+2026-06-15 18:28:54 - mcp_agent - INFO - 系统事件: 初始化 API 服务器
+2026-06-15 18:28:54 - mcp_agent - INFO - 系统事件: 初始化智能体
+2026-06-15 18:28:54 - mcp_agent - INFO - 配置加载完成，工具数量: 5
+2026-06-15 18:28:54 - mcp_agent - INFO - 系统事件: 智能体初始化完成
+2026-06-15 18:28:54 - mcp_agent - INFO - 系统事件: 启动 Web 服务器
+2026-06-15 18:29:43 - mcp_agent - INFO - 系统事件: 初始化 API 服务器
+2026-06-15 18:29:43 - mcp_agent - INFO - 系统事件: 初始化智能体
+2026-06-15 18:29:43 - mcp_agent - INFO - 配置加载完成，工具数量: 5
+2026-06-15 18:29:43 - mcp_agent - INFO - 系统事件: 智能体初始化完成
+2026-06-15 18:29:43 - mcp_agent - INFO - 系统事件: 启动 Web 服务器
+2026-06-15 18:30:14 - mcp_agent - INFO - 系统事件: 开始联网模式测试
+2026-06-15 18:30:14 - mcp_agent - INFO - 系统事件: 初始化智能体
+2026-06-15 18:30:14 - mcp_agent - INFO - 配置加载完成，工具数量: 5
+2026-06-15 18:30:14 - mcp_agent - INFO - 系统事件: 智能体初始化完成
+2026-06-15 18:30:14 - mcp_agent - INFO - 智能体重联网模式: 启用
+2026-06-15 18:30:14 - mcp_agent - INFO - 收到用户消息: 天气 北京
+2026-06-15 18:30:14 - mcp_agent - INFO - 选择工具: weather
+2026-06-15 18:30:14 - mcp_agent - INFO - 工具参数: {'location': '北京'}
+2026-06-15 18:30:15 - mcp_agent - INFO - 工具调用成功 - weather
+2026-06-15 18:30:15 - mcp_agent - INFO - 智能体回复 (使用工具: weather): 🌤️ 北京的天气：
+• 天气状况：雷暴
+• 温度：30.9°C
+• 湿度：47%
+• 风速：4.7km/h
+
+数据来源：Open-Meteo
+2026-06-15 18:31:14 - mcp_agent - INFO - 智能体重联网模式: 禁用
+2026-06-15 18:31:14 - mcp_agent - INFO - 联网模式已切换: 禁用
+2026-06-15 18:31:14 - mcp_agent - INFO - 智能体重联网模式: 启用
+2026-06-15 18:31:14 - mcp_agent - INFO - 联网模式已切换: 启用
+2026-06-15 18:31:49 - mcp_agent - INFO - 智能体重联网模式: 禁用
+2026-06-15 18:31:49 - mcp_agent - INFO - 联网模式已切换: 禁用
+2026-06-15 18:31:54 - mcp_agent - INFO - 收到聊天请求: 你好...
+2026-06-15 18:31:54 - mcp_agent - INFO - 智能体重联网模式: 禁用
+2026-06-15 18:31:54 - mcp_agent - INFO - 收到用户消息: 你好
+2026-06-15 18:31:54 - mcp_agent - INFO - 准备调用 LLM API - 模型: deepseek-ai/DeepSeek-V3, 消息数: 3
+2026-06-15 18:31:55 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: deepseek-ai/DeepSeek-V3)
+2026-06-15 18:31:55 - mcp_agent - INFO - 智能体回复: 你好有什么可以帮你的吗
+2026-06-15 18:31:59 - mcp_agent - INFO - 收到聊天请求: 你是什么模型...
+2026-06-15 18:31:59 - mcp_agent - INFO - 智能体重联网模式: 禁用
+2026-06-15 18:31:59 - mcp_agent - INFO - 收到用户消息: 你是什么模型
+2026-06-15 18:31:59 - mcp_agent - INFO - 准备调用 LLM API - 模型: deepseek-ai/DeepSeek-V3, 消息数: 5
+2026-06-15 18:32:02 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: deepseek-ai/DeepSeek-V3)
+2026-06-15 18:32:02 - mcp_agent - INFO - 智能体回复: 我是一个由深度求索公司DeepSeek开发的AI助手基于DeepSeekV3大模型擅长理解和生成自然语言我能帮助你解答问题提供建议处理文本等有什么我可以帮你的吗
+2026-06-15 18:32:11 - mcp_agent - INFO - 收到聊天请求: 你可以联网吗？...
+2026-06-15 18:32:11 - mcp_agent - INFO - 智能体重联网模式: 禁用
+2026-06-15 18:32:11 - mcp_agent - INFO - 收到用户消息: 你可以联网吗？
+2026-06-15 18:32:11 - mcp_agent - INFO - 准备调用 LLM API - 模型: deepseek-ai/DeepSeek-V3, 消息数: 7
+2026-06-15 18:32:32 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: deepseek-ai/DeepSeek-V3)
+2026-06-15 18:32:32 - mcp_agent - INFO - 智能体回复: 是的我可以联网搜索但需要你手动开启联网功能这样我就能获取最新的信息来回答你的问题比如新闻实时数据或更新的知识 如果你需要我联网查询请告诉我具体的问题并开启联网搜索我会尽力帮你找到准确的答案
+2026-06-15 22:39:08 - mcp_agent - INFO - 系统事件: 初始化 API 服务器
+2026-06-15 22:39:08 - mcp_agent - INFO - 系统事件: 初始化智能体
+2026-06-15 22:39:08 - mcp_agent - INFO - 配置加载完成，工具数量: 5
+2026-06-15 22:39:08 - mcp_agent - INFO - 系统事件: 智能体初始化完成
+2026-06-15 22:39:08 - mcp_agent - INFO - 系统事件: 启动 Web 服务器
+2026-06-15 23:03:02 - mcp_agent - INFO - 智能体重联网模式: 禁用
+2026-06-15 23:03:02 - mcp_agent - INFO - 联网模式已切换: 禁用
+2026-06-15 23:03:17 - mcp_agent - INFO - 收到聊天请求: 你好...
+2026-06-15 23:03:17 - mcp_agent - INFO - 智能体重联网模式: 禁用
+2026-06-15 23:03:17 - mcp_agent - INFO - 收到用户消息: 你好
+2026-06-15 23:03:17 - mcp_agent - INFO - 准备调用 LLM API - 模型: deepseek-ai/DeepSeek-V3, 消息数: 3
+2026-06-15 23:03:18 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: deepseek-ai/DeepSeek-V3)
+2026-06-15 23:03:18 - mcp_agent - INFO - 智能体回复: 你好有什么可以帮你的吗
+2026-06-15 23:03:21 - mcp_agent - INFO - 智能体重联网模式: 启用
+2026-06-15 23:03:21 - mcp_agent - INFO - 联网模式已切换: 启用
+2026-06-15 23:03:35 - mcp_agent - INFO - 收到聊天请求: 预测一下世界杯比分...
+2026-06-15 23:03:35 - mcp_agent - INFO - 智能体重联网模式: 启用
+2026-06-15 23:03:35 - mcp_agent - INFO - 收到用户消息: 预测一下世界杯比分
+2026-06-15 23:03:35 - mcp_agent - INFO - 准备调用 LLM API - 模型: deepseek-ai/DeepSeek-V3, 消息数: 5
+2026-06-15 23:03:42 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: deepseek-ai/DeepSeek-V3)
+2026-06-15 23:03:42 - mcp_agent - INFO - 智能体回复: 预测世界杯比分很难做到准确因为比赛结果受很多因素影响比如球队状态伤病临场发挥等不过我们可以分析一些关键点来推测可能的走向 1. 强队对比巴西法国阿根廷等传统强队通常更被看好但足球是圆的冷门常有发生 2...
+2026-06-15 23:04:00 - mcp_agent - INFO - 智能体重联网模式: 禁用
+2026-06-15 23:04:00 - mcp_agent - INFO - 联网模式已切换: 禁用
+2026-06-15 23:04:03 - mcp_agent - INFO - 智能体重联网模式: 启用
+2026-06-15 23:04:03 - mcp_agent - INFO - 联网模式已切换: 启用
+2026-06-16 00:06:12 - mcp_agent - INFO - 智能体重联网模式: 启用
+2026-06-16 00:06:12 - mcp_agent - INFO - 联网模式已切换: 启用
+2026-06-16 00:06:13 - mcp_agent - INFO - 智能体重联网模式: 启用
+2026-06-16 00:06:13 - mcp_agent - INFO - 联网模式已切换: 启用
+2026-06-16 00:06:13 - mcp_agent - INFO - 智能体重联网模式: 启用
+2026-06-16 00:06:13 - mcp_agent - INFO - 联网模式已切换: 启用
+2026-06-16 00:06:14 - mcp_agent - INFO - 智能体重联网模式: 启用
+2026-06-16 00:06:14 - mcp_agent - INFO - 联网模式已切换: 启用
+2026-06-16 00:06:15 - mcp_agent - INFO - 智能体重联网模式: 禁用
+2026-06-16 00:06:15 - mcp_agent - INFO - 联网模式已切换: 禁用
+2026-06-16 00:06:18 - mcp_agent - INFO - 收到聊天请求: 你好...
+2026-06-16 00:06:18 - mcp_agent - INFO - 智能体重联网模式: 禁用
+2026-06-16 00:06:18 - mcp_agent - INFO - 收到用户消息: 你好
+2026-06-16 00:06:18 - mcp_agent - INFO - 准备调用 LLM API - 模型: deepseek-ai/DeepSeek-V3, 消息数: 7
+2026-06-16 00:06:20 - mcp_agent - INFO - API 调用成功: https://api.siliconflow.cn/v1/chat/completions (模型: deepseek-ai/DeepSeek-V3)
+2026-06-16 00:06:20 - mcp_agent - INFO - 智能体回复: 你好有什么我可以帮你的吗

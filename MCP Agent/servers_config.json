@@ -1,0 +1,40 @@
+{
+  "servers": [
+    {
+      "name": "weather",
+      "script": "tools/weather_api.py",
+      "tool": "get_weather_real",
+      "transport": "stdio"
+    },
+    {
+      "name": "writer",
+      "script": "write_server.py",
+      "tool": "write_file",
+      "transport": "stdio"
+    },
+    {
+      "name": "word",
+      "script": "tools/word_tool.py",
+      "tool": "create_word_document",
+      "transport": "stdio"
+    },
+    {
+      "name": "rag",
+      "script": "rag_server.py",
+      "tool": "query_rag",
+      "transport": "stdio"
+    },
+    {
+      "name": "web_search",
+      "script": "tools/web_search.py",
+      "tool": "web_search",
+      "transport": "stdio"
+    },
+    {
+      "name": "webpage",
+      "script": "tools/web_scraper.py",
+      "tool": "fetch_webpage",
+      "transport": "stdio"
+    }
+  ]
+}

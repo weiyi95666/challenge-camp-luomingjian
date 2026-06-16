@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP Agent - 智能体助手</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 侧边栏 - 历史对话 -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <span class="logo-icon">🤖</span>
+                    <h2>MCP Agent</h2>
+                </div>
+                <button class="new-chat-btn" id="newChatBtn">
+                    <span>+</span> 新对话
+                </button>
+                <button class="collapse-btn" id="collapseBtn" title="折叠/展开侧边栏">
+                    <span>◀</span>
+                </button>
+            </div>
+            
+            <div class="history-list" id="historyList">
+                <!-- 历史对话列表 -->
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="sidebar-actions">
+                    <div class="mode-toggle-sidebar">
+                        <label class="mode-label">
+                            <span>🌐</span> 联网模式:
+                        </label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="onlineModeToggleSidebar">
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <span id="onlineModeStatusSidebar" class="mode-status">启用</span>
+                    </div>
+                    <div class="response-mode-selector">
+                        <label class="mode-label">
+                            <span>⚡</span> 响应模式:
+                        </label>
+                        <select id="responseModeSelect" class="response-select">
+                            <option value="fast">快速响应</option>
+                            <option value="deep">深度思考</option>
+                        </select>
+                    </div>
+                    <div class="theme-toggle">
+                        <label class="mode-label">
+                            <span>🎨</span> 主题:
+                        </label>
+                        <button id="themeToggleBtn" class="theme-btn">
+                            <span id="themeIcon">🌙</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 主内容区 -->
+        <div class="main-content">
+            <header class="app-header">
+                <div class="header-content">
+                    <button class="toggle-sidebar-btn" id="toggleSidebarBtn">
+                        <span>☰</span>
+                    </button>
+                    <div class="logo">
+                        <span class="logo-icon">🤖</span>
+                        <h1>MCP Agent</h1>
+                    </div>
+                    <div class="header-actions">
+                        <div class="mode-toggle">
+                            <label class="mode-label">
+                                <span>🌐</span> 联网模式:
+                            </label>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="onlineModeToggle">
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <span id="onlineModeStatus" class="mode-status">启用</span>
+                        </div>
+                        <div class="model-selector">
+                            <label class="model-label">
+                                <span>🧠</span> 模型:
+                            </label>
+                            <select id="providerSelect" class="provider-select">
+                                <option value="">加载中...</option>
+                            </select>
+                            <select id="modelSelect" class="model-select">
+                                <option value="">加载中...</option>
+                            </select>
+                        </div>
+                        <button id="clearBtn" class="btn-secondary">
+                            <span>🧹</span> 清空对话
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <main class="chat-container" id="chatContainer">
+                <div id="messages" class="messages">
+                    <div class="welcome-message">
+                        <div class="message assistant">
+                            <div class="avatar">🤖</div>
+                            <div class="message-content">
+                                <p>你好！我是 MCP 智能体助手。</p>
+                                <p>我可以帮你查询天气、搜索网络、写文件等。</p>
+                                <p>试试看：说 "天气 上海" 或 "搜索 人工智能"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="input-area">
+        <div class="input-wrapper">
+            <textarea 
+                id="messageInput" 
+                placeholder="输入你的问题..."
+                rows="1"
+            ></textarea>
+            <button id="sendBtn" class="btn-primary">
+                <span>发送</span>
+            </button>
+        </div>
+    </footer>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
